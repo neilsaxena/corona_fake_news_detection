@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Fake News Detector</title>
+
+    <!-- add icon link -->
+    <link rel="icon" href="static/robot.png" type="image/icon type" />
+
+    <!-- Adding Bootstrap file -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='bootstrap.min.css') }}"
+    />
+
+    <!-- Adding fonts -->
+    <style>
+      @font-face {
+        font-family: JuliusSansOne;
+        src: url(static/JuliusSansOne-Regular.woff2);
+      }
+
+      @font-face {
+        font-family: PlayfairDisplay;
+        src: url(static/PlayfairDisplay-Regular.woff2);
+      }
+    </style>
+
+    <style media="screen">
+      .hovernow {
+        background-color: #ffffff;
+        width: auto;
+        height: auto;
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid lightgray;
+        box-shadow: 0 10px 55px rgba(0, 0, 0, 0.15);
+        transition: box-shadow 0.3s ease-in-out;
+      }
+      /*to alter color */
+      .hovernow:hover {
+        box-shadow: 0 5px 60px #00fffb;
+      }
+    </style>
+
+    <style media="screen">
+      body {
+        background-image: url("static/background.png");
+      }
+      h4,
+      button {
+        font-family: JuliusSansOne;
+        color: blue;
+      }
+      h3 {
+        font-family: JuliusSansOne;
+        text-align: center;
+        font-weight: bold;
+      }
+      p {
+        font-family: JuliusSansOne;
+        text-align: center;
+      }
+      table,
+      th,
+      td {
+        border: 0px solid black;
+        border-collapse: collapse;
+        padding: 15px;
+        font-family: JuliusSansOne;
+      }
+      table.center {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      #top {
+        font-family: JuliusSansOne;
+        font-weight: bold;
+      }
+      .footer {
+        left: 0;
+        bottom: 0;
+        width: 100%;
+
+        color: white;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <br />
+    <!-- Start of top Header and Image -->
+    <div class="container">
+      <div class="container">
+        <div class="row">
+          <div class="col-8">
+            <br /><br /><br /><br />
+            <h1 id="top" class="display-4">Fake News Predictor</h1>
+            <p class="lead">Using Artificial Intelligence</p>
+          </div>
+          <div class="col-4">
+            <img src="static/brain.png" width="400" height="320" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of top Header and Image -->
+    <br />
+    <br />
+    <h4 style="text-align: center; color: black;" ;>
+      Identify fake news using the power of Artificial Intelligence
+    </h4>
+    <br />
+    <!-- Start of our Input Card -->
+    <div class="container">
+      <div class="hovernow rounded">
+        <div class="card border-0">
+          <div class="card-body">
+            <!-- Main Input For Receiving Query to our ML -->
+            <form action="{{ url_for('predict')}}" method="post">
+              <div class="form-group">
+                <h4>
+                  <label for="exampleFormControlTextarea1"
+                    >Enter News Here :
+                  </label>
+                </h4>
+
+                <textarea
+                  class="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                  name="newsinput"
+                  placeholder="{{ msg }}"
+                  required="required"
+                ></textarea>
+              </div>
+              <!-- <input type="text" name="news" placeholder="NEWS" required="required" /> -->
+              <br />
+              <button type="submit" class="btn btn-outline-primary btn-block">
+                Verify
+              </button>
+            </form>
+            <br />
+            <div class="alert alert-info" role="alert">
+              {{ prediction_text }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+      <br />
+    </div>
+    <!-- End of our Input Card -->
+    <br />
+    <!-- Start of Footer -->
+    <div class="container">
+      <h3>Created by :</h3>
+
+      <table class="center">
+        <tr>
+          <td>Neil Saxena</td>
+          <td>Ravi Panusuriya</td>
+        </tr>
+        <tr>
+          <td>Heena Katarya</td>
+          <td>Priyanka Dobariya</td>
+        </tr>
+        <tr>
+          <td>Dubendu Singh</td>
+          <td>Hardik Parmar</td>
+        </tr>
+        <tr>
+          <td>Vishal Sakariya</td>
+          <td>Mashira Lohiya</td>
+        </tr>
+      </table>
+      <br />
+    </div>
+    <!-- End of Footer -->
+  </body>
+
+  <!-- Adding Javascript and Jquery files -->
+
+  <script type="text/javascript" src="static/jquery.min.js"></script>
+  <script type="text/javascript" src="static/bootstrap.min.js"></script>
+</html>
